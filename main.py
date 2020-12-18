@@ -3,25 +3,22 @@ import math
 
 def main():
     """Função principal que será rodada quando o script for passado para o interpretador."""
-    valor_mínimo = 200
-    
-    número_de_ligações = float(input('Digite o número de ligações que foram efetuadas durante o mês: '))
+    número_ligações = int(input('Digite o número de ligações realizadas durante o mês: '))
 
-    diferença_ligações_100_mais = (número_de_ligações - 100) 
-    diferença_ligações_150_mais = (número_de_ligações - 150)
-    diferença_ligações_200_mais = (número_de_ligações - 200)
-    diferença_valor_100_mais = diferença_ligações_100_mais * 0.6
-    diferença_valor_150_mais = diferença_ligações_150_mais * 0.5
-    diferença_valor_200_mais = diferença_ligações_200_mais * 0.4
+    if 0 < número_ligações <= 100:
+      print('O valor devido é R$ 200.00.')
 
-    if número_de_ligações <= 100:
-      print(f'O valor devido é R$ {valor_mínimo:.2f}.')
-    elif 100 < número_de_ligações <= 150:
-      print(f'O valor devido é R$ {valor_mínimo + diferença_valor_100_mais:.2f}.')
-    elif 150 < número_de_ligações <= 200:
-      print(f'O valor devido é R$ {valor_mínimo + diferença_valor_100_mais + diferença_valor_150_mais:.2f}.')
-    else:
-      print(f'O valor devido é R$ {valor_mínimo + diferença_valor_100_mais + diferença_valor_150_mais + diferença_valor_200_mais:.2f}.')
+    if 100 < número_ligações <= 150:
+      valor = float(200 + (número_ligações-100) * 0.60)
+      print('O valor devido é R$ {:.2f}.'.format(valor))
+
+    if 150 < número_ligações <=200:
+      valor = float(230 + (número_ligações - 150) * 0.50)
+      print('O valor devido é R$ {:.2f}.'.format(valor))
+
+    if número_ligações > 200:
+      valor = float(255 + (número_ligações - 200)*0.40)
+      print('O valor devido é R$ {:.2f}.'.format(valor))
 
 
 if __name__ == '__main__':
